@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--espresso);
+  padding: 0 2rem;
+  height: 64px;
+  box-shadow: 0 2px 12px var(--shadow);
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    .logo { font-size: 1.5rem; }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+
+    a {
+      display: block;
+      padding: 0.5rem 1.1rem;
+      color: rgba(245, 236, 215, 0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all 0.2s;
+
+      &:hover { color: var(--cream); background: rgba(255,255,255,0.08); }
+      &.active { color: var(--accent); background: rgba(232, 168, 56, 0.12); }
+    }
+  }
+}

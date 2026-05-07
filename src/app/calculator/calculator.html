@@ -1,0 +1,76 @@
+<div class="calculator-page">
+  <div class="page-header">
+    <h1>Grind Calculator</h1>
+    <p>Dial in your perfect shot by adjusting your dose and yield</p>
+  </div>
+
+  <div class="calc-grid">
+    <div class="card inputs-card">
+      <h2>Your Parameters</h2>
+
+      <div class="field">
+        <label>Brew Method</label>
+        <div class="method-tabs">
+          <button *ngFor="let m of brewMethods"
+            [class.active]="brewMethod() === m.value"
+            (click)="onBrewMethodChange(m.value)">
+            {{ m.label }}
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Bean Weight (dose)</label>
+        <div class="slider-row">
+          <input type="range" min="5" max="50" step="0.5"
+            [value]="beanWeight()"
+            (input)="onBeanWeightChange(+$any($event.target).value)" />
+          <div class="value-badge">{{ beanWeight() }}g</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Liquid Output (yield)</label>
+        <div class="slider-row">
+          <input type="range" min="10" max="150" step="1"
+            [value]="espressoOutput()"
+            (input)="onEspressoOutputChange(+$any($event.target).value)" />
+          <div class="value-badge">{{ espressoOutput() }}g</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card results-card">
+      <h2>Results</h2>
+
+      <div class="ratio-display">
+        <span class="ratio-label">Brew Ratio</span>
+        <span class="ratio-value">1 : {{ ratio() }}</span>
+      </div>
+
+      <div class="result-block grind-block">
+        <div class="result-icon">⚙️</div>
+        <div>
+          <div class="result-title">Grind Setting</div>
+          <div class="result-main">{{ grindSetting().label }}</div>
+          <div class="result-sub">{{ grindSetting().desc }}</div>
+        </div>
+      </div>
+
+      <div class="result-block time-block">
+        <div class="result-icon">⏱️</div>
+        <div>
+          <div class="result-title">Extraction Time</div>
+          <div class="result-main">{{ extractionTime() }}</div>
+        </div>
+      </div>
+
+      <div class="ratio-guide">
+        <h3>Common Ratios</h3>
+        <div class="guide-item"><span class="tag">Ristretto</span> 1:1 – 1:1.5</div>
+        <div class="guide-item"><span class="tag">Espresso</span> 1:2 – 1:2.5</div>
+        <div class="guide-item"><span class="tag">Lungo</span> 1:3 – 1:4</div>
+      </div>
+    </div>
+  </div>
+</div>

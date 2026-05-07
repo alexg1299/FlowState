@@ -1,0 +1,75 @@
+<div class="facts-page">
+  <div class="page-header">
+    <h1>Coffee Bean Facts</h1>
+    <p>Discover the origin, flavor, and story behind each bean variety</p>
+  </div>
+
+  <div class="bean-grid">
+    <div class="bean-card" *ngFor="let b of beans" (click)="select(b)">
+      <div class="bean-card-top" [style.background]="b.color">
+        <span class="bean-emoji">{{ b.emoji }}</span>
+      </div>
+      <div class="bean-card-body">
+        <h3>{{ b.name }}</h3>
+        <p class="tagline">{{ b.tagline }}</p>
+        <div class="origin-tag">📍 {{ b.origin }}</div>
+        <div class="flavor-chips">
+          <span *ngFor="let f of b.flavor.slice(0,3)" class="chip">{{ f }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Panel -->
+  <div class="modal-overlay" *ngIf="selected()" (click)="close()">
+    <div class="detail-modal" (click)="$event.stopPropagation()">
+      <div class="detail-header" [style.background]="selected()!.color">
+        <span class="detail-emoji">{{ selected()!.emoji }}</span>
+        <div class="detail-title">
+          <h2>{{ selected()!.name }}</h2>
+          <p>{{ selected()!.origin }}</p>
+        </div>
+        <button class="close-btn" (click)="close()">✕</button>
+      </div>
+
+      <div class="detail-body">
+        <p class="about">{{ selected()!.about }}</p>
+
+        <div class="specs-grid">
+          <div class="spec"><span class="spec-label">Roast</span><span>{{ selected()!.roast }}</span></div>
+          <div class="spec"><span class="spec-label">Caffeine</span><span>{{ selected()!.caffeine }}</span></div>
+          <div class="spec"><span class="spec-label">Altitude</span><span>{{ selected()!.altitude }}</span></div>
+        </div>
+
+        <h3>Flavor Profile</h3>
+        <div class="flavor-chips large">
+          <span *ngFor="let f of selected()!.flavor" class="chip">{{ f }}</span>
+        </div>
+
+        <h3>Characteristics</h3>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-label">Acidity</span>
+            <div class="bar-track"><div class="bar-fill" [style.width.%]="selected()!.acidity" [style.background]="selected()!.color"></div></div>
+            <span class="bar-val">{{ selected()!.acidity }}%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Body</span>
+            <div class="bar-track"><div class="bar-fill" [style.width.%]="selected()!.body" [style.background]="selected()!.color"></div></div>
+            <span class="bar-val">{{ selected()!.body }}%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Sweetness</span>
+            <div class="bar-track"><div class="bar-fill" [style.width.%]="selected()!.sweetness" [style.background]="selected()!.color"></div></div>
+            <span class="bar-val">{{ selected()!.sweetness }}%</span>
+          </div>
+        </div>
+
+        <div class="fun-fact">
+          <span class="fun-label">☕ Fun Fact</span>
+          <p>{{ selected()!.funFact }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

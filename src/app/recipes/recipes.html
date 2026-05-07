@@ -1,0 +1,63 @@
+<div class="recipes-page">
+  <div class="page-header">
+    <h1>Coffee Recipes</h1>
+    <p>From classic espresso to cold brew — explore the world of coffee</p>
+  </div>
+
+  <div class="filters">
+    <button *ngFor="let f of filters"
+      [class.active]="activeFilter() === f"
+      (click)="setFilter(f)">{{ f }}</button>
+  </div>
+
+  <div class="recipe-grid">
+    <div class="recipe-card" *ngFor="let r of filteredRecipes"
+      (click)="openRecipe(r)">
+      <div class="card-top" [style.background]="r.color">
+        <span class="emoji">{{ r.emoji }}</span>
+        <span class="category-badge">{{ r.category }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ r.name }}</h3>
+        <p>{{ r.description }}</p>
+        <div class="card-meta">
+          <span>⏱ {{ r.prepTime }}</span>
+          <span class="difficulty" [class]="r.difficulty.toLowerCase()">{{ r.difficulty }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" *ngIf="selectedRecipe()" (click)="closeRecipe()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header" [style.background]="selectedRecipe()!.color">
+        <span class="modal-emoji">{{ selectedRecipe()!.emoji }}</span>
+        <button class="close-btn" (click)="closeRecipe()">✕</button>
+      </div>
+      <div class="modal-body">
+        <h2>{{ selectedRecipe()!.name }}</h2>
+        <p class="modal-desc">{{ selectedRecipe()!.description }}</p>
+
+        <div class="modal-meta">
+          <div><span class="label">Time</span> {{ selectedRecipe()!.prepTime }}</div>
+          <div><span class="label">Difficulty</span> {{ selectedRecipe()!.difficulty }}</div>
+          <div><span class="label">Category</span> {{ selectedRecipe()!.category }}</div>
+        </div>
+
+        <h3>Ingredients</h3>
+        <ul class="ingredients">
+          <li *ngFor="let ing of selectedRecipe()!.ingredients">
+            <span class="ing-name">{{ ing.item }}</span>
+            <span class="ing-amount">{{ ing.amount }}</span>
+          </li>
+        </ul>
+
+        <h3>Method</h3>
+        <ol class="steps">
+          <li *ngFor="let step of selectedRecipe()!.steps">{{ step }}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
