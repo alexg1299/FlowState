@@ -51,6 +51,9 @@ export class CalculatorComponent {
     return '4–6 min';
   });
 
+  beanWeightPresets = [8, 9, 17, 18];
+  outputPresets = this.beanWeightPresets.map(w => w * 2);
+
   brewMethods = [
     { value: 'espresso', label: 'Espresso' },
     { value: 'aeropress', label: 'AeroPress' },

@@ -1,11 +1,16 @@
-<nav class="navbar">
+<nav class="navbar" [class.hidden]="navHidden">
   <div class="nav-brand">
     <span class="logo">☕</span>
     <span class="brand-name">Flow State</span>
   </div>
-  <ul class="nav-links">
-    <li><a routerLink="/calculator" routerLinkActive="active">Calculator</a></li>
-    <li><a routerLink="/recipes" routerLinkActive="active">Recipes</a></li>
-    <li><a routerLink="/facts" routerLinkActive="active">Bean Facts</a></li>
+  <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" [class.open]="menuOpen">
+    <li><a routerLink="/calculator" routerLinkActive="active" (click)="closeMenu()">Calculator</a></li>
+    <li><a routerLink="/recipes" routerLinkActive="active" (click)="closeMenu()">Recipes</a></li>
+    <li><a routerLink="/facts" routerLinkActive="active" (click)="closeMenu()">Bean Facts</a></li>
   </ul>
 </nav>

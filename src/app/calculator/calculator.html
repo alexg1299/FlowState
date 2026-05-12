@@ -21,6 +21,11 @@
 
       <div class="field">
         <label>Bean Weight (dose)</label>
+        <div class="quick-select">
+          <button *ngFor="let w of beanWeightPresets"
+            [class.active]="beanWeight() === w"
+            (click)="onBeanWeightChange(w)">{{ w }}g</button>
+        </div>
         <div class="slider-row">
           <input type="range" min="5" max="50" step="0.5"
             [value]="beanWeight()"
@@ -31,6 +36,11 @@
 
       <div class="field">
         <label>Liquid Output (yield)</label>
+        <div class="quick-select">
+          <button *ngFor="let w of outputPresets"
+            [class.active]="espressoOutput() === w"
+            (click)="onEspressoOutputChange(w)">{{ w }}g</button>
+        </div>
         <div class="slider-row">
           <input type="range" min="10" max="150" step="1"
             [value]="espressoOutput()"

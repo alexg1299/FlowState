@@ -74,3 +74,14 @@
   .guide-item { display: flex; align-items: center; gap: 0.7rem; font-size: 0.87rem; margin-bottom: 0.4rem; color: var(--text-light); }
   .tag { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 0.15rem 0.5rem; font-size: 0.78rem; font-weight: 600; color: var(--roast); }
 }
+
+.quick-select {
+  display: flex; gap: 0.4rem; margin-top: 0.6rem;
+  button {
+    padding: 0.25rem 0.7rem; border: 1.5px solid var(--border); border-radius: 20px;
+    background: white; cursor: pointer; font-size: 0.82rem; color: var(--text-light);
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+    &.active { background: var(--caramel); color: white; border-color: var(--caramel); }
+    &:hover:not(.active) { border-color: var(--caramel); color: var(--roast); }
+  }
+}
