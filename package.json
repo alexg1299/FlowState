@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && npx wrangler pages deploy dist/coffee-app/browser --project-name=flowstate",
+    "build": "ng build",
     "build:local": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
