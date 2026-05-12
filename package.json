@@ -4,11 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && npx wrangler pages deploy dist/coffee-app/browser --project-name=flowstate",
+    "build:local": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "npm run build && wrangler deploy",
-    "preview": "npm run build && wrangler dev"
+    "test": "ng test"
   },
   "private": true,
   "packageManager": "npm@10.9.7",
@@ -29,7 +28,6 @@
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2",
-    "vitest": "^4.0.8",
-    "wrangler": "^4.88.0"
+    "vitest": "^4.0.8"
   }
 }
